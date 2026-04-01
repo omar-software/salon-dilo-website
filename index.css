@@ -1,0 +1,285 @@
+/* Allgemeine Einstellungen */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f5f5f5;
+}
+
+/* Wrapper */
+.wrapper {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+/* Header */
+.header {
+    position: relative;
+    min-height: 420px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.hero-content {
+    text-align: center;
+    color: #fff;
+    max-width: 700px;
+}
+
+.hero-content h1 {
+    margin: 0 0 15px;
+    font-size: 3rem;
+    letter-spacing: 1px;
+}
+
+.hero-content p {
+    margin: 0 0 25px;
+    font-size: 1.2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #ffffff;
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn:hover {
+    background: #eaeaea;
+    transform: translateY(-2px);
+}
+
+/* Navigation */
+.navbar {
+    background: #222;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navbar ul li {
+    margin: 0;
+}
+
+.navbar ul li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 16px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    background: #444;
+    color: #fff;
+}
+
+/* Main Content */
+.homepage {
+    text-align: center;
+    padding: 50px 20px;
+    background: #fff;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+section h2 {
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 15px;
+}
+
+section p {
+    max-width: 800px;
+    margin: 0 auto 15px;
+    color: #666;
+}
+
+/* Welcome */
+.welcome,
+.services,
+.about,
+.gallery,
+.contact {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    padding: 30px 25px;
+    background: #fafafa;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Listen */
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.services ul,
+.contact ul {
+    margin-top: 15px;
+}
+
+.services li,
+.contact li {
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    color: #444;
+}
+
+/* Links in Kontakt */
+.contact a {
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+/* Gallery */
+.gallery-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.gallery-images img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-images img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* Social Media */
+.social-media {
+    margin-top: 20px;
+}
+
+.social-media a {
+    display: inline-block;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+.social-logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.social-logo:hover {
+    transform: scale(1.15);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #222;
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .wrapper {
+        width: 95%;
+        margin: 15px auto;
+    }
+
+    .header,
+    .hero-overlay {
+        min-height: 320px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+    }
+
+    .navbar ul li a {
+        padding: 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .homepage {
+        padding: 30px 15px;
+    }
+
+    .welcome,
+    .services,
+    .about,
+    .gallery,
+    .contact {
+        padding: 22px 18px;
+    }
+
+    section h2 {
+        font-size: 1.7rem;
+    }
+
+    .gallery-images img {
+        height: 200px;
+    }
+}
