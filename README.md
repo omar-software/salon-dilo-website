@@ -1,9 +1,9 @@
 # Salon Dilo Website - Laravel Vue Full Stack Version
 
-Full Stack web application for Salon Dilo, rebuilt as a second version using Laravel, Vue.js, MySQL, and Vite.
+Full Stack web application for Salon Dilo, rebuilt as a second version using Laravel, Vue.js, MySQL, Vite, and Selenium.
 
 This project was originally a static PHP / HTML / CSS website.  
-It has now been upgraded to a full stack application with an admin area for managing website content.
+It has now been upgraded to a full stack application with an admin area for managing website content and end-to-end tests.
 
 ## Features
 
@@ -20,6 +20,8 @@ It has now been upgraded to a full stack application with an admin area for mana
 - Add gallery images from admin panel
 - Delete gallery images from admin panel
 - Image upload to public/images
+- Selenium end-to-end tests
+- Automated tests for admin login, logout, homepage, and gallery management
 - Responsive design
 
 ## Tech Stack
@@ -32,6 +34,8 @@ It has now been upgraded to a full stack application with an admin area for mana
 - HTML
 - CSS
 - JavaScript
+- Selenium
+- Node.js
 - XAMPP
 - Git / GitHub
 
@@ -67,6 +71,15 @@ public/
 
 routes/
 └── web.php
+
+selenium-tests/
+├── admin-login-test.js
+├── admin-logout-test.js
+├── home-page-test.js
+├── admin-gallery-add-test.js
+├── admin-gallery-delete-test.js
+├── package.json
+└── package-lock.json
 ```
 
 ## Local Setup
@@ -158,12 +171,63 @@ settings
 gallery_images
 ```
 
+## Selenium Tests
+
+This project includes Selenium end-to-end tests for the main application features.
+
+Tested features:
+
+- Admin login
+- Admin logout
+- Public homepage content
+- Gallery image upload
+- Gallery image deletion
+
+Test files:
+
+```text
+selenium-tests/
+├── admin-login-test.js
+├── admin-logout-test.js
+├── home-page-test.js
+├── admin-gallery-add-test.js
+└── admin-gallery-delete-test.js
+```
+
+Install Selenium test dependencies:
+
+```bash
+cd selenium-tests
+npm install
+```
+
+Run tests:
+
+```bash
+node admin-login-test.js
+node home-page-test.js
+node admin-gallery-add-test.js
+node admin-gallery-delete-test.js
+node admin-logout-test.js
+```
+
+Before running the tests, make sure Apache, MySQL, Laravel, and Vite are running.
+
+Required local services:
+
+```text
+XAMPP Apache
+XAMPP MySQL
+php artisan serve
+npm run dev
+```
+
 ## Version Note
 
 This is the second version of the Salon Dilo project.
 
 The first version was a static PHP / HTML / CSS website.  
-This version was rebuilt as a full stack Laravel and Vue.js application for portfolio purposes.
+This version was rebuilt as a full stack Laravel and Vue.js application with Selenium end-to-end tests for portfolio purposes.
 
 ## Author
 
