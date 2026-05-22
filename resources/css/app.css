@@ -1,0 +1,394 @@
+/* Allgemeine Einstellungen */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Wrapper für die komplette öffentliche Webseite */
+.wrapper {
+    width: 96%;
+    max-width: 1400px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Header mit Bild aus dem public/images Ordner */
+.header {
+    min-height: 460px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Ebene über dem Header-Bild */
+.hero-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 460px;
+    padding: 20px;
+    background: transparent;
+}
+
+/* Button-Stil, falls später wieder ein Header-Button verwendet wird */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #ffffff;
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn:hover {
+    background: #eaeaea;
+    transform: translateY(-2px);
+}
+
+/* Navigation */
+.navbar {
+    background: #222;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 16px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    background: #444;
+}
+
+/* Hauptbereich */
+.homepage {
+    text-align: center;
+    padding: 50px 20px;
+    background: #fff;
+}
+
+/* Inhaltssektionen */
+.welcome,
+.services,
+.about,
+.gallery,
+.contact {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    padding: 30px 25px;
+    background: #fafafa;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+section h2 {
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 15px;
+}
+
+section p {
+    max-width: 800px;
+    margin: 0 auto 15px;
+    color: #666;
+}
+
+/* Listen */
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.services li,
+.contact li {
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    color: #444;
+}
+
+/* Kontaktlinks */
+.contact a {
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+/* Galerie */
+.gallery-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.gallery-images img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-images img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* Social Media */
+.social-media {
+    margin-top: 20px;
+}
+
+.social-media a {
+    display: inline-block;
+    margin: 0 8px;
+}
+
+.social-logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.social-logo:hover {
+    transform: scale(1.15);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #222;
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+/* Admin-Seite */
+.admin-page {
+    min-height: 100vh;
+    padding: 50px 20px;
+    background: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.admin {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 35px 25px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.admin h1 {
+    margin-top: 0;
+    font-size: 2.4rem;
+}
+
+/* Vorschau des aktuellen Header-Bildes */
+.current-header-preview {
+    margin: 25px 0;
+}
+
+.current-header-preview img {
+    width: 100%;
+    max-width: 500px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+}
+
+/* Admin-Formular */
+.admin form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+/* Button-Design für Dateiauswahl */
+.file-label {
+    display: inline-block;
+    padding: 12px 22px;
+    background: #eeeeee;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.file-label input {
+    display: none;
+}
+
+/* Admin-Buttons */
+.admin button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.admin button:hover {
+    background: #444;
+}
+
+/* Admin-Meldungen */
+.admin-message {
+    margin-top: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Link zurück zur Webseite */
+.back-link {
+    display: inline-block;
+    margin-top: 25px;
+    color: #222;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Login-Eingabefeld */
+.login-input {
+    width: 100%;
+    max-width: 320px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* Logout-Button */
+.logout-button {
+    margin-bottom: 20px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #555;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.logout-button:hover {
+    background: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wrapper {
+        width: 95%;
+        margin: 15px auto;
+    }
+
+    .header,
+    .hero-overlay {
+        min-height: 320px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+    }
+
+    .navbar a {
+        padding: 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .homepage {
+        padding: 30px 15px;
+    }
+
+    section h2 {
+        font-size: 1.7rem;
+    }
+
+    .gallery-images img {
+        height: 200px;
+    }
+
+    .current-header-preview img {
+        height: 180px;
+    }
+}
+
+/* Galerie-Verwaltung im Admin-Bereich */
+.gallery-admin {
+    margin-top: 35px;
+    padding-top: 30px;
+    border-top: 1px solid #ddd;
+}
+
+.admin-gallery-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.admin-gallery-item {
+    padding: 15px;
+    background: #fafafa;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+}
+
+.admin-gallery-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.admin-gallery-item p {
+    min-height: 40px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.admin-gallery-item button {
+    background: #8b0000;
+}
+
+.admin-gallery-item button:hover {
+    background: #b00000;
+}
