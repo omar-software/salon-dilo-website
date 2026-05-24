@@ -3,7 +3,7 @@
 Full Stack web application for Salon Dilo, rebuilt as a second version using Laravel, Vue.js, MySQL, Vite, and Selenium.
 
 This project was originally a static PHP / HTML / CSS website.  
-It has now been upgraded to a full stack application with an admin area for managing website content and end-to-end tests.
+It has now been upgraded to a full stack application with an admin area for managing website content, cleaner backend architecture, and automated tests.
 
 ## Features
 
@@ -14,14 +14,19 @@ It has now been upgraded to a full stack application with an admin area for mana
 - Admin login with database authentication
 - Password hashing with Laravel Hash
 - Protected admin area using sessions
+- Admin route protection with custom Laravel Middleware
+- Form Request Validation for admin login
 - Dynamic header image loaded from MySQL
 - Header image upload from admin panel
 - Gallery images loaded from MySQL
 - Add gallery images from admin panel
 - Delete gallery images from admin panel
 - Image upload to public/images
+- Service Layer for image upload and deletion logic
+- Laravel Feature Tests for authentication and protected routes
 - Selenium end-to-end tests
 - Automated tests for admin login, logout, homepage, and gallery management
+- Git branch and Pull Request workflow
 - Responsive design
 
 ## Tech Stack
@@ -43,12 +48,19 @@ It has now been upgraded to a full stack application with an admin area for mana
 
 ```text
 app/
-├── Http/Controllers/
-│   ├── SettingsController.php
-│   └── GalleryController.php
+├── Http/
+│   ├── Controllers/
+│   │   ├── SettingsController.php
+│   │   └── GalleryController.php
+│   ├── Middleware/
+│   │   └── AdminAuthMiddleware.php
+│   └── Requests/
+│       └── AdminLoginRequest.php
 ├── Models/
 │   ├── Admin.php
 │   └── GalleryImage.php
+└── Services/
+    └── ImageService.php
 
 database/
 ├── migrations/
@@ -71,6 +83,10 @@ public/
 
 routes/
 └── web.php
+
+tests/
+└── Feature/
+    └── AdminAuthTest.php
 
 selenium-tests/
 ├── admin-login-test.js
@@ -159,7 +175,7 @@ The admin area includes:
 - Gallery image management
 - Image upload
 - Image deletion
-- Protected access using Laravel sessions
+- Protected access using Laravel sessions and custom middleware
 
 ## Database Tables
 
@@ -169,6 +185,63 @@ Main tables used in this project:
 admins
 settings
 gallery_images
+```
+
+## Clean Code and Architecture
+
+The project was refactored to improve maintainability and code structure.
+
+Implemented improvements:
+
+- Custom Laravel Middleware for protecting the admin area and admin API routes
+- Form Request Validation for admin login input validation
+- ImageService for central image upload and deletion logic
+- Cleaner controllers with less duplicated file handling code
+- Separate testing database for automated Laravel tests
+- Feature development using Git branches and Pull Requests
+
+Main architecture parts:
+
+```text
+app/
+├── Http/
+│   ├── Middleware/
+│   │   └── AdminAuthMiddleware.php
+│   ├── Requests/
+│   │   └── AdminLoginRequest.php
+│   └── Controllers/
+│       ├── SettingsController.php
+│       └── GalleryController.php
+├── Services/
+│   └── ImageService.php
+└── Models/
+    ├── Admin.php
+    └── GalleryImage.php
+```
+
+## Laravel Feature Tests
+
+This project includes Laravel Feature Tests for authentication and protected routes.
+
+Tested backend features:
+
+- Guest users are redirected from the admin page to the login page
+- Admin login succeeds with valid credentials
+- Admin login fails with an incorrect password
+- Protected gallery API cannot be accessed without admin login
+- Admin login validation requires an email address
+- Admin login validation requires a password
+
+Run Laravel tests:
+
+```bash
+php artisan test --filter=AdminAuthTest
+```
+
+The tests use a separate MySQL test database:
+
+```text
+salon_delo_test
 ```
 
 ## Selenium Tests
@@ -227,7 +300,7 @@ npm run dev
 This is the second version of the Salon Dilo project.
 
 The first version was a static PHP / HTML / CSS website.  
-This version was rebuilt as a full stack Laravel and Vue.js application with Selenium end-to-end tests for portfolio purposes.
+This version was rebuilt as a full stack Laravel and Vue.js application with middleware, validation, service layer, Laravel Feature Tests, and Selenium end-to-end tests for portfolio purposes.
 
 ## Author
 
