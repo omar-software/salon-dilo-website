@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -27,7 +28,7 @@ class SettingsController extends Controller
     }
 
     // Neues Header-Bild hochladen und in der Datenbank speichern
-    public function updateHeaderImage(Request $request)
+    public function updateHeaderImage(Request $request, ImageService $imageService)
     {
         // Prüfen, ob eine gültige Bilddatei gesendet wurde
         $request->validate([
@@ -37,11 +38,8 @@ class SettingsController extends Controller
         // Bild aus dem Request holen
         $image = $request->file('header_image');
 
-        // Eindeutigen Dateinamen erstellen
-        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-
-        // Bild im public/images Ordner speichern
-        $image->move(public_path('images'), $imageName);
+        // Bild mit dem ImageService hochladen
+        $imageName = $imageService->uploadImage($image);
 
         // Bildname in der Datenbank aktualisieren
         DB::table('settings')->where('id', 1)->update([
