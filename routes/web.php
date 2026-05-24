@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Requests\AdminLoginRequest;
 use App\Models\Admin;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +18,9 @@ Route::get('/admin-login', function () {
 });
 
 // Admin-Login prüfen
-Route::post('/admin-login', function (Request $request) {
+Route::post('/admin-login', function (AdminLoginRequest $request) {
 
-    // E-Mail und Passwort aus dem Formular lesen
+    // E-Mail und Passwort aus dem geprüften Formular lesen
     $email = $request->input('email');
     $password = $request->input('password');
 

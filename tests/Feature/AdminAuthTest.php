@@ -96,4 +96,40 @@ class AdminAuthTest extends TestCase
             'message' => 'Nicht autorisiert.',
         ]);
     }
+
+        /**
+     * Test: Login ohne E-Mail wird abgelehnt.
+     */
+    public function test_admin_login_requires_email(): void
+    {
+        // Login-Anfrage ohne E-Mail senden
+        $response = $this->post('/admin-login', [
+            'password' => '123456',
+        ]);
+
+        // Prüfen, ob Laravel einen Redirect zurückgibt
+        // Das passiert bei normaler Formular-Validierung
+        $response->assertStatus(302);
+
+        // Prüfen, ob ein Fehler für das Feld email vorhanden ist
+        $response->assertSessionHasErrors('email');
+    }
+
+    /**
+     * Test: Login ohne Passwort wird abgelehnt.
+     */
+    public function test_admin_login_requires_password(): void
+    {
+        // Login-Anfrage ohne Passwort senden
+        $response = $this->post('/admin-login', [
+            'email' => 'admin@salondilo.com',
+        ]);
+
+        // Prüfen, ob Laravel einen Redirect zurückgibt
+        // Das passiert bei normaler Formular-Validierung
+        $response->assertStatus(302);
+
+        // Prüfen, ob ein Fehler für das Feld password vorhanden ist
+        $response->assertSessionHasErrors('password');
+    }
 }
