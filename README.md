@@ -23,6 +23,8 @@ It has now been upgraded to a full stack application with an admin area for mana
 - Delete gallery images from admin panel
 - Image upload to public/images
 - Service Layer for image upload and deletion logic
+- AdminSeeder for creating the default admin account
+- Database seeding for local setup
 - Laravel Feature Tests for authentication and protected routes
 - Selenium end-to-end tests
 - Automated tests for admin login, logout, homepage, and gallery management
@@ -64,6 +66,9 @@ app/
 
 database/
 ├── migrations/
+└── seeders/
+    ├── AdminSeeder.php
+    └── DatabaseSeeder.php
 
 resources/
 ├── js/
@@ -141,6 +146,12 @@ Run migrations:
 php artisan migrate
 ```
 
+Seed the default admin account:
+
+```bash
+php artisan db:seed
+```
+
 Start Laravel:
 
 ```bash
@@ -168,6 +179,12 @@ http://127.0.0.1:8000/admin-login
 ```
 
 The admin account is stored in the database and uses a hashed password.
+
+The default admin account can be created with the AdminSeeder using:
+
+```bash
+php artisan db:seed
+```
 
 The admin area includes:
 
@@ -197,6 +214,7 @@ Implemented improvements:
 - Form Request Validation for admin login input validation
 - ImageService for central image upload and deletion logic
 - Cleaner controllers with less duplicated file handling code
+- AdminSeeder for creating the default admin account
 - Separate testing database for automated Laravel tests
 - Feature development using Git branches and Pull Requests
 
@@ -300,7 +318,7 @@ npm run dev
 This is the second version of the Salon Dilo project.
 
 The first version was a static PHP / HTML / CSS website.  
-This version was rebuilt as a full stack Laravel and Vue.js application with middleware, validation, service layer, Laravel Feature Tests, and Selenium end-to-end tests for portfolio purposes.
+This version was rebuilt as a full stack Laravel and Vue.js application with middleware, validation, service layer, database seeding, Laravel Feature Tests, and Selenium end-to-end tests for portfolio purposes.
 
 ## Author
 
