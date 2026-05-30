@@ -320,6 +320,10 @@ This is the second version of the Salon Dilo project.
 The first version was a static PHP / HTML / CSS website.  
 This version was rebuilt as a full stack Laravel and Vue.js application with middleware, validation, service layer, database seeding, Laravel Feature Tests, and Selenium end-to-end tests for portfolio purposes.
 
+## License
+
+This project is licensed under the MIT License.
+
 ## Author
 
 Omar Mohamad-Ali
